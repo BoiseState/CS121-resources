@@ -31,11 +31,11 @@ public class ColorGridOption
 		this.displayPanel = displayPanel;
 		this.color = color;
 		
-		this.button = new JButton();
-		this.button.setBackground(color);
-		this.button.setOpaque(true); // MacOSX fix for background color.
-		this.button.setBorderPainted(false); // MacOSX fix for background color.
-		this.button.addActionListener(new ColorOptionListener());
+		button = new JButton();
+		button.setBackground(color);
+		button.setOpaque(true); // MacOSX fix for background color.
+		button.setBorderPainted(false); // MacOSX fix for background color.
+		button.addActionListener(new ColorOptionListener());
 	}
 	
 	/**
@@ -65,7 +65,7 @@ public class ColorGridOption
 		@Override
 		public void actionPerformed(ActionEvent e)
 		{
-			//set display panel to the color of the button that was clicked
+			// set display panel to the color of the button that was clicked
 			displayPanel.setBackground(color);
 		}
 	}

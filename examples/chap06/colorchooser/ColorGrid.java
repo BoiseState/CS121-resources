@@ -8,22 +8,21 @@ import javax.swing.JPanel;
 
 /**
  * Represents a 2-dimensional grid of ColorGridOptions. Uses a GridLayout to arrange the
- * colors in a grid. This class extends JPanel, which means it is a JPanel. We are extending
- * the functionality of a JPanel by adding our own methods to it.
+ * colors in a grid.
  * 
  * @author CS121 Instructors
  */
-@SuppressWarnings("serial")
-public class ColorGrid extends JPanel
+public class ColorGrid
 {
+	private ColorGridOption[][] colorOptions;
+	private JPanel gridPanel;
+	
 	private final Color[][] COLORS = { 
 			{ Color.RED,    Color.GREEN,  Color.BLUE }, 
 			{ Color.YELLOW, Color.CYAN,   Color.MAGENTA },
 			{ Color.WHITE,  Color.BLACK,  Color.GRAY },
 			{ Color.PINK,   Color.ORANGE, Color.LIGHT_GRAY}
 	};
-	
-	private ColorGridOption[][] colorOptions;
 	
 	/**
 	 * Creates a new ColorGrid panel. Sets the layout, preferred size, and adds the
@@ -33,9 +32,10 @@ public class ColorGrid extends JPanel
 	 */
 	public ColorGrid(JPanel displayPanel) 
 	{
-		// Sets the layout and preferred size of this ColorGrid panel to the dimensions of our color array.
-		this.setLayout(new GridLayout(COLORS.length, COLORS[0].length, 1, 1));
-		this.setPreferredSize(new Dimension(300, 300));
+		// Creates a JPanel with GridLayout with dimensions of the COLORS array.
+		gridPanel = new JPanel();
+		gridPanel.setLayout(new GridLayout(COLORS.length, COLORS[0].length, 1, 1));
+		gridPanel.setPreferredSize(new Dimension(300, 300));
 		
 		// Instantiates color options array to the dimensions of our color array.
 		colorOptions = new ColorGridOption[COLORS.length][COLORS[0].length];
@@ -48,8 +48,17 @@ public class ColorGrid extends JPanel
 				colorOptions[i][j] = new ColorGridOption(COLORS[i][j], displayPanel);
 				
 				// Add the option's button to this GridOption panel.
-				this.add(colorOptions[i][j].getButton());
+				gridPanel.add(colorOptions[i][j].getButton());
 			}
 		}
+	}
+	
+	/**
+	 * Returns a reference to the JPanel representing this ColorGrid.
+	 * @return a reference to the JPanel.
+	 */
+	public JPanel getJPanel()
+	{
+		return gridPanel;
 	}
 }

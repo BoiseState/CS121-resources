@@ -14,6 +14,8 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public class ColorChooser extends JPanel
 {
+	private ColorGrid colorGrid;
+	
 	/**
 	 * Creates a new ColorChooser GUI.
 	 */
@@ -23,14 +25,14 @@ public class ColorChooser extends JPanel
 		JPanel displayPanel = new JPanel();
 		displayPanel.setPreferredSize(new Dimension(300,300));
 		
-		// Sub-panel with grid of colors to choose from.
-		ColorGrid gridPanel = new ColorGrid(displayPanel);
+		// Sub-panel with grid of colors to choose from. The color grid needs to know which
+		// panel (displayPanel) to display the color on.
+		colorGrid = new ColorGrid(displayPanel);
 		
 		// Add sub-panels to this ColorChooser panel.
-		this.add(gridPanel);
+		this.add(colorGrid.getJPanel());
 		this.add(displayPanel);
 	}
-	
 	
 	/**
 	 * Initialize the GUI and make it visible.

@@ -25,14 +25,11 @@ public class Die
    }
 
    /**
-    * Computes a new face value for this die and returns the result.
-    * @return The new face value.
+    * Computes a new face value for this die.
     */
-   public int roll()
+   public void roll()
    {
-      //faceValue = (int)(Math.random() * MAX) + 1;
       faceValue = rand.nextInt(MAX) + 1;
-      return faceValue;
    }
 
    /**

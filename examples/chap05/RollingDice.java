@@ -31,15 +31,11 @@ public class RollingDice
 
       	sum = die1.getFaceValue() + die2.getFaceValue();
       	System.out.println ("Sum: " + sum);
-//
-//      	int val1 = die1.roll();
-//      	int val2 = die2.roll();
-//      	sum = val1 + val2;
-      	
-      	sum = die1.roll() + die2.roll();
-      	
-      	
+
+      	die1.roll(); die2.roll();
       	System.out.println ("Die One: " + die1 + ", Die Two: " + die2);
+      	
+      	sum = die1.getFaceValue() + die2.getFaceValue();
       	System.out.println ("New sum: " + sum);
    	}
 }

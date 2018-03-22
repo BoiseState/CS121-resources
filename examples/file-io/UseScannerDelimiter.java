@@ -52,7 +52,8 @@ public class UseScannerDelimiter {
 	 */
 	public static void scanWithDelims(String text, String delimiters)
 	{
-		Scanner scan = new Scanner(text).useDelimiter(delimiters);
+		Scanner scan = new Scanner(text);
+		scan.useDelimiter(delimiters);
 
 		int count = 0;
 

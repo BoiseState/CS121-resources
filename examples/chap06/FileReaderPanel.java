@@ -6,18 +6,17 @@ import java.util.Scanner;
 
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.ScrollPaneConstants;
 
 /**
-  Demonstrates the use of a file chooser and a text area.
-  @author CS121 Instructors
+ * Demonstrates the use of a scroll pane, text area, and file chooser.
+ * @author CS121 Instructors
  */
 @SuppressWarnings("serial")
-public class FileChooser extends JPanel
+public class FileReaderPanel extends JPanel
 {
 	private JTextArea filePreview;
 	private JButton openFileButton;
@@ -26,15 +25,16 @@ public class FileChooser extends JPanel
 	 * Opens a file chooser dialog, reads the selected file and loads it into a
 	 * text area.
 	 */
-	public FileChooser()
+	public FileReaderPanel()
 	{
 		openFileButton = new JButton("Select File");
 		openFileButton.addActionListener(new ButtonActionListener());
 		
 		filePreview = new JTextArea(20, 30);
-		JScrollPane scrollPane = new JScrollPane(filePreview,
-				ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
-				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		
+		JScrollPane scrollPane = new JScrollPane(filePreview);
+		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		
 		add(scrollPane);
 		add(openFileButton);
@@ -50,7 +50,6 @@ public class FileChooser extends JPanel
 			
 			// The following starts in the current folder, which is often convenient
 			JFileChooser chooser = new JFileChooser(".");
-			
 			int status = chooser.showOpenDialog(null);
 
 			if (status != JFileChooser.APPROVE_OPTION) {
@@ -73,18 +72,5 @@ public class FileChooser extends JPanel
 				}
 			}
 		}
-	}
-
-	/**
-	 * Creates and launches the JFrame.
-	 * @param args
-	 */
-	public static void main(String[] args)
-	{
-		JFrame frame = new JFrame("Display File");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().add(new FileChooser());
-		frame.pack();
-		frame.setVisible(true);
 	}
 }
